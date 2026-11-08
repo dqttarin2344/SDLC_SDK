@@ -1,0 +1,25 @@
+{
+  "name": "sdlc-agent-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SDLC agent pipeline SDK (Claude + GitHub Copilot) with cost estimation and human approval gate",
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/claude",
+    "packages/copilot"
+  ],
+  "scripts": {
+    "build": "npm run build -w @sdlc/core && npm run build -w @sdlc/claude && npm run build -w @sdlc/copilot && npm run generate",
+    "generate": "node packages/claude/dist/cli.js generate --out packages/claude/template && node packages/copilot/dist/cli.js generate --out packages/copilot/template",
+    "test": "npm run build -w @sdlc/core && node --test packages/core/test/*.test.mjs",
+    "typecheck": "tsc -b packages/core packages/claude packages/copilot"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

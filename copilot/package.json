@@ -1,0 +1,15 @@
+{
+  "name": "@sdlc/copilot",
+  "version": "0.1.0",
+  "description": "SDLC agent pipeline on the GitHub Copilot SDK",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": { "sdlc-copilot": "dist/cli.js" },
+  "files": ["dist", "template", "copilot-instructions.section.md"],
+  "scripts": { "build": "tsc -b && chmod +x dist/cli.js" },
+  "dependencies": {
+    "@github/copilot-sdk": "^1.0.29",
+    "@sdlc/core": "0.1.0"
+  }
+}

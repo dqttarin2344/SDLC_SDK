@@ -1,0 +1,12 @@
+{
+  "name": "@sdlc/core",
+  "version": "0.1.0",
+  "description": "Shared SDLC pipeline model, cost estimator, approval gate and ledger",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": "./dist/index.js", "./package.json": "./package.json" },
+  "bin": { "sdlc-estimate": "dist/cli/estimate.js" },
+  "files": ["dist", "roles", "sdlc.config.default.json"],
+  "scripts": { "build": "tsc -b && chmod +x dist/cli/estimate.js" }
+}

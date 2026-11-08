@@ -1,0 +1,123 @@
+{
+  "mode": "feature",
+  "complexity": "auto",
+  "budget": {
+    "maxUsd": 25,
+    "overrunTolerance": 0.25
+  },
+  "review": {
+    "maxIterations": 2
+  },
+  "test": {
+    "maxFixIterations": 2,
+    "commands": {}
+  },
+  "artifactsDir": ".sdlc/runs",
+  "sandbox": {
+    "enabled": true,
+    "required": false
+  },
+  "stages": [
+    {
+      "id": "requirements",
+      "agent": "sdlc-analyst",
+      "enabled": true,
+      "access": "read-only",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "medium",
+      "gateAfter": true
+    },
+    {
+      "id": "research",
+      "agent": "sdlc-researcher",
+      "enabled": true,
+      "access": "read-only",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "medium"
+    },
+    {
+      "id": "design",
+      "agent": "sdlc-architect",
+      "enabled": true,
+      "access": "read-only",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "high",
+      "gateAfter": true
+    },
+    {
+      "id": "implement",
+      "agent": "sdlc-developer",
+      "enabled": true,
+      "access": "write",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "high"
+    },
+    {
+      "id": "review",
+      "agent": "sdlc-reviewer",
+      "enabled": true,
+      "access": "read-only",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "high"
+    },
+    {
+      "id": "unit-test",
+      "agent": "sdlc-unit-tester",
+      "enabled": true,
+      "access": "write",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "medium"
+    },
+    {
+      "id": "integration-test",
+      "agent": "sdlc-integration-tester",
+      "enabled": true,
+      "access": "write",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "medium"
+    },
+    {
+      "id": "functional-test",
+      "agent": "sdlc-functional-tester",
+      "enabled": true,
+      "access": "write",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "medium"
+    },
+    {
+      "id": "release",
+      "agent": "sdlc-release",
+      "enabled": true,
+      "access": "read-only",
+      "model": {
+        "claude": "inherit",
+        "copilot": "inherit"
+      },
+      "effort": "low"
+    }
+  ]
+}

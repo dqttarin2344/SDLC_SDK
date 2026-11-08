@@ -1,0 +1,15 @@
+{
+  "name": "@sdlc/claude",
+  "version": "0.1.0",
+  "description": "SDLC agent pipeline on the Claude Agent SDK",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": { "sdlc-claude": "dist/cli.js" },
+  "files": ["dist", "template", "CLAUDE.section.md"],
+  "scripts": { "build": "tsc -b && chmod +x dist/cli.js" },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.319",
+    "@sdlc/core": "0.1.0"
+  }
+}

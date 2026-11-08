@@ -103,6 +103,16 @@ test("generated agents keep the session model when stages inherit; pinned models
   assert.match(copilotAgentMarkdown(role, pinned, roles), /^model: "Claude Opus 5\.5 \(copilot\)"$/m);
 });
 
+test("copilot pipeline handoffs auto-send to the next agent instead of waiting for a manual click", async () => {
+  const { copilotAgentMarkdown } = await import("../../copilot/dist/index.js");
+  const { loadConfig, loadRoles } = await import("../dist/index.js");
+  const roles = loadRoles();
+  const role = roles.find((r) => r.stage === "research");
+  const markdown = copilotAgentMarkdown(role, loadConfig(makeRepo()), roles);
+  assert.match(markdown, /send: true/m);
+  assert.doesNotMatch(markdown, /send: false/m);
+});
+
 test("estimate CLI: --preset inherit and `models` mention inherit", () => {
   const repo = makeRepo();
   const run = (args) => spawnSync(process.execPath, [CLI, ...args], { encoding: "utf8" });

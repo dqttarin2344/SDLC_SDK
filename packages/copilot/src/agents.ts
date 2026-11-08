@@ -40,7 +40,7 @@ export function copilotAgentMarkdown(role: Role, cfg: SdlcConfig, roles: Role[])
       `  - label: ${yamlStr(`▶ Next: ${stageTitle(next)}`)}`,
       `    agent: ${next.name}`,
       `    prompt: ${yamlStr(`Continue the approved SDLC run (see the conversation above): do the ${next.stage} stage.`)}`,
-      "    send: false",
+      "    send: true",
     );
   }
   const back = roles.find((r) => r.name === role.back);
@@ -49,7 +49,7 @@ export function copilotAgentMarkdown(role: Role, cfg: SdlcConfig, roles: Role[])
       `  - label: ${yamlStr(`↩ Send back to ${back.title}`)}`,
       `    agent: ${back.name}`,
       `    prompt: ${yamlStr(`Fix the issues reported in the ${role.stage} report above (only BLOCKER/MAJOR findings or product defects). Write a new implementation report.`)}`,
-      "    send: false",
+      "    send: true",
     );
   }
   const frontmatter = [
@@ -72,7 +72,7 @@ handoffs:
   - label: "✅ Approve & start: Requirements"
     agent: sdlc-analyst
     prompt: "I APPROVE the most recent cost estimate shown above. First run \`npx --no-install sdlc-estimate approve <runId of that estimate> --note 'approved in GitHub Copilot'\` (use the exact run id printed with the estimate, not 'latest'), then do the requirements stage."
-    send: false
+    send: true
   - label: "💰 Re-estimate cheaper (economy preset)"
     agent: sdlc-planner
     prompt: "Re-estimate the same requirement with --preset economy (keep my other options)."
@@ -80,7 +80,7 @@ handoffs:
   - label: "✏️ Change the plan"
     agent: sdlc-planner
     prompt: "Change the plan: "
-    send: false
+    send: true
 ---
 
 You are the **SDLC Planner**. You never write code or start pipeline stages yourself. Your only job is to produce a cost estimate and let the human decide.

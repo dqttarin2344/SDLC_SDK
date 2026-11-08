@@ -142,12 +142,12 @@ npx sdlc-copilot models
 
 `models` liệt kê model mà tài khoản của bạn dùng được và cho biết model nào đã có giá trong bảng ước tính. Xác thực bằng tài khoản Copilot CLI đã đăng nhập, hoặc `GH_TOKEN` / `GITHUB_TOKEN`.
 
-**Trong Copilot Chat (VS Code)**, gõ `/sdlc`. Agent **sdlc-planner** hiện bảng chi phí, rồi đưa ra các nút handoff:
+**Trong Copilot Chat (VS Code)**, gõ `/sdlc`. Agent **sdlc-planner** hiện bảng chi phí, rồi sau khi bạn xác nhận sẽ tự động chạy pipeline từ requirements đến release mà không cần bấm handoff giữa các stage:
 
-- **✅ Approve & start: Requirements**: chính cú bấm này là bước duyệt. Agent nhận việc sẽ ghi approval.
-- **💰 Re-estimate cheaper** và **✏️ Change the plan**.
+- **✅ Approve & start: Requirements**: đây là bước duyệt duy nhất cần xác nhận từ bạn.
+- **💰 Re-estimate cheaper** và **✏️ Change the plan**: dùng khi muốn chỉnh phương án chi phí.
 
-Agent của từng stage chạy `sdlc-estimate verify latest` trước khi làm. Nếu plan chưa được duyệt, agent dừng. Chuyển giữa các stage bằng nút **▶ Next** hoặc **↩ Send back to Developer**.
+Agent của từng stage chạy `sdlc-estimate verify latest` trước khi làm. Nếu plan chưa được duyệt, agent dừng. Sau khi xác nhận, chuyển stage xảy ra tự động theo luồng đã định nghĩa.
 
 ## Dùng như thư viện
 
